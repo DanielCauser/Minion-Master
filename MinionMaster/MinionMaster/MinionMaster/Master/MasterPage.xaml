@@ -3,9 +3,10 @@
     <ContentPage.Content>
         <Grid>
             <maps:Map WidthRequest="320" HeightRequest="200"
-                  x:Name="MyMap"
-                  IsShowingUser="true"
-                  MapType="Hybrid" />
+                  x:Name="MyMap" 
+                  IsShowingUser="true">
+                
+                </maps:Map>
             </Grid>
     </ContentPage.Content>
 </ContentPage>

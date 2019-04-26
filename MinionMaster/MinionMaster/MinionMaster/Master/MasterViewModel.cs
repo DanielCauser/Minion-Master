@@ -1,6 +1,8 @@
 ﻿using System;
+using MinionMaster.Contracts;
 using MinionMaster.Services;
 using Prism.Navigation;
+using ReactiveUI.Fody.Helpers;
 
 namespace MinionMaster.Master
 {
@@ -18,5 +20,7 @@ namespace MinionMaster.Master
 
                 });
         }
+
+        [Reactive] public Position Position { get; set; }
     }
 }
