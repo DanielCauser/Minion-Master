@@ -10,9 +10,14 @@ namespace MinionMaster.Minion
     public class MinionViewModel : ViewModelBase
     {
         private readonly IDirectionService service;
+        private readonly ILocationManager _locationManager;
 
-        public MinionViewModel(INavigationService navigationService, IDirectionService service) : base(navigationService)
+        public MinionViewModel(INavigationService navigationService,
+             IDirectionService service,
+             ILocationManager locationManager) : base(navigationService)
         {
+            _locationManager = locationManager;
+
             this.service = service;
 
             this.service.OnCompassDirectionReceived()
@@ -22,6 +27,15 @@ namespace MinionMaster.Minion
                 });
         }
 
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            _locationManager.StartGettingLocation(() =>
+            {
+                Console.WriteLine("location updated");
+            });
+        }
+
         [Reactive] public double Heading { get; set; }
+        public ILocationManager LocationManager { get; }
     }
 }

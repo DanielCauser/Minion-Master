@@ -24,7 +24,10 @@ namespace MinionMaster.ViewModels
         public override void OnNavigatingTo(INavigationParameters parameters)
         {
             // ask permission
-            _locationManager.StartGettingLocation();
+            _locationManager.StartGettingLocation(() =>
+            {
+                Console.WriteLine("LOCATION UPDATED");
+            });
         }
     }
 }

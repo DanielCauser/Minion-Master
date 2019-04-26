@@ -6,14 +6,22 @@ namespace MinionMaster.iOS
 {
     public class LocationManager : ILocationManager
     {
-        private readonly CLLocationManager locationService;
-        public LocationManager()
+        private CLLocationManager locationService;
+        Action _locationUpdated;
+
+        void LocationUpdated(object sender, EventArgs a)
         {
-            locationService = new CLLocationManager();
+            _locationUpdated.Invoke();
         }
 
-        public void StartGettingLocation()
+        public void StartGettingLocation(Action locationUpdated)
         {
+            _locationUpdated = locationUpdated;
+
+            locationService = new CLLocationManager();
+
+            locationService.RequestWhenInUseAuthorization();
+            locationService.UpdatedLocation += LocationUpdated;
             locationService.StartUpdatingLocation();
         }
     }
