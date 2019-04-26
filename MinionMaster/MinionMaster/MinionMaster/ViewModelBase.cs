@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MinionMaster.ViewModels
+namespace MinionMaster
 {
     public class ViewModelBase : BindableBase, INavigationAware, IDestructible
     {

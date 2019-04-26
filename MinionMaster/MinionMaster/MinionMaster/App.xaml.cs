@@ -1,7 +1,9 @@
-﻿using Prism;
+﻿using MinionMaster.Master;
+using MinionMaster.Minion;
+using MinionMaster.Root;
+using Prism;
 using Prism.Ioc;
-using MinionMaster.ViewModels;
-using MinionMaster.Views;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -30,6 +32,10 @@ namespace MinionMaster
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+
+
+            containerRegistry.RegisterForNavigation<MasterPage, MasterViewModel>();
+            containerRegistry.RegisterForNavigation<MinionPage, MinionViewModel>();
         }
     }
 }

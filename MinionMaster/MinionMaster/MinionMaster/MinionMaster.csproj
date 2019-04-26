@@ -7,6 +7,15 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.2.0.839982" />
     <PackageReference Include="Prism.Autofac.Forms" Version="7.1.0.431" />
+    <PackageReference Include="LiveXAML" Version="2.1.72" />
+    <PackageReference Include="ReactiveUI" Version="9.13.1" />
+    <PackageReference Include="System.Reactive" Version="4.1.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+    <Folder Include="Master\" />
+    <Folder Include="Minion\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
 </Project>

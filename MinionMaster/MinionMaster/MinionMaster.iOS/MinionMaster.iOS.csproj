@@ -181,6 +181,12 @@
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Resources\Default@2x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\compass%402x.png" />
+    <BundleResource Include="Resources\compass.png" />
+    <BundleResource Include="Resources\compass%403x.png" />
+    <BundleResource Include="Resources\arrow%403x.png" />
+    <BundleResource Include="Resources\arrow%402x.png" />
+    <BundleResource Include="Resources\arrow.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
