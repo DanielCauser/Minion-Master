@@ -12,7 +12,7 @@ namespace MinionMaster.Master
         {
             this.service = service;
 
-            this.service.GpsReceived()
+            this.service.OnGpsReceived()
                 .Subscribe((heading) =>
                 {
 

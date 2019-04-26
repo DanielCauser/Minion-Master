@@ -15,10 +15,10 @@ namespace MinionMaster.Minion
         {
             this.service = service;
 
-            this.service.CompassDirectionReceived()
+            this.service.OnCompassDirectionReceived()
                 .Subscribe((heading) =>
                 {
-                    this.Heading = heading;
+                    this.Heading = heading.Value;
                 });
         }
 

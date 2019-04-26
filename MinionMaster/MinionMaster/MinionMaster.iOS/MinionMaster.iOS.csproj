@@ -188,6 +188,12 @@
     <BundleResource Include="Resources\arrow%403x.png" />
     <BundleResource Include="Resources\arrow%402x.png" />
     <BundleResource Include="Resources\arrow.png" />
+    <BundleResource Include="Resources\minion.jpeg" />
+    <BundleResource Include="Resources\minion%402x.jpeg" />
+    <BundleResource Include="Resources\minion%403x.jpeg" />
+    <BundleResource Include="Resources\gru.jpg" />
+    <BundleResource Include="Resources\gru%403x.jpg" />
+    <BundleResource Include="Resources\gru%402x.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -198,6 +204,9 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.2.0.839982" />
     <PackageReference Include="Prism.Autofac.Forms" Version="7.1.0.431" />
+    <PackageReference Include="Xamarin.Forms.Maps">
+      <Version>3.2.0.839982</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MinionMaster\MinionMaster.csproj">

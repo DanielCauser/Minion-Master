@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reactive;
+using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Threading.Tasks;
 using MinionMaster.Contracts;
@@ -8,19 +9,24 @@ namespace MinionMaster.Services
 {
     public class DirectionService : IDirectionService
     {
-        readonly Subject<Unit> partnerStatusChangedSubject;
-        readonly Subject<Position> gpsReceivedSubject;
-        readonly Subject<double> compassDirectionReceivedSubject;
+        //Events
+        readonly Subject<Position> onGpsReceivedSubject;
+        readonly Subject<CompassReading> onCompassDirectionReceivedSubject;
+        public IObservable<Position> OnGpsReceived() => this.onGpsReceivedSubject;
+        public IObservable<CompassReading> OnCompassDirectionReceived() => this.onCompassDirectionReceivedSubject;
 
-        public IObservable<Unit> PartnerStatusChanged() => this.partnerStatusChangedSubject;
-        public IObservable<Position> GpsReceived() => this.gpsReceivedSubject;
-        public IObservable<double> CompassDirectionReceived() => this.compassDirectionReceivedSubject;
+
+        //IObservable<CompassReading> GpsReceived =>
+        //Observable.Create<CompassReading>(ob => this.conn.On<CompassReading>("CompassDirectionReading")
+
+
+
 
         public DirectionService()
         {
-            this.compassDirectionReceivedSubject = new Subject<double>();
-            this.gpsReceivedSubject = new Subject<Position>();
-            this.partnerStatusChangedSubject = new Subject<Unit>();
+            //this.onPartnerStatusChangedSubject = new Subject<Unit>();
+            this.onCompassDirectionReceivedSubject = new Subject<CompassReading>();
+            this.onGpsReceivedSubject = new Subject<Position>();
         }
 
         public Task BrandMe(string brand)
@@ -34,6 +40,16 @@ namespace MinionMaster.Services
         }
 
         public Task SendGps(double latitude, double longitude)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IObservable<CompassReading> CompassDirectionReceived()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IObservable<Position> GpsReceived()
         {
             throw new NotImplementedException();
         }
