@@ -1,5 +1,5 @@
 ﻿using System;
-namespace MinionMaster
+namespace MinionMaster.Services
 {
     public interface ILocationManager
     {
