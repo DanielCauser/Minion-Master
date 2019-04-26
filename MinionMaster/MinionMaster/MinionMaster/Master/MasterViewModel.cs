@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using MinionMaster.Contracts;
 using MinionMaster.Services;
 using Prism.Navigation;
 using ReactiveUI.Fody.Helpers;
+using Xamarin.Forms;
 
 namespace MinionMaster.Master
 {
@@ -17,16 +20,26 @@ namespace MinionMaster.Master
             this.service.OnGpsReceived()
                 .Subscribe((position) =>
                 {
-                    Position = new Xamarin.Forms.Maps.Position(position.Latitude, position.Longitude);
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        Locations.Clear();
+                        Locations.Add(new Location() { Position = new Xamarin.Forms.Maps.Position(position.Latitude, position.Longitude) });
+                    });
                 });
         }
 
-        [Reactive] public Xamarin.Forms.Maps.Position Position { get; set; }
+        [Reactive] public ObservableCollection<Location> Locations { get; set; } = new ObservableCollection<Location>();
+
 
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
             await service.Connect();
         }
+    }
+
+    public class Location
+    {
+        public Xamarin.Forms.Maps.Position Position { get; set; }
     }
 }

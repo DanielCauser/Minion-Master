@@ -3,8 +3,8 @@
     <ContentPage.Content>
         <Grid>
             <maps:Map WidthRequest="320" HeightRequest="200"
-                  x:Name="MyMap" 
-                  IsShowingUser="true">
+                  x:Name="MyMap" ItemsSource="{Binding Locations}"
+                  IsShowingUser="false">
                 <maps:Map.ItemTemplate>
                 <DataTemplate>
                     <maps:Pin Position="{Binding Position}"
