@@ -52,5 +52,9 @@
 	<string>MinionMaster</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>I NEED THY LOCATION</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 </dict>
 </plist>
