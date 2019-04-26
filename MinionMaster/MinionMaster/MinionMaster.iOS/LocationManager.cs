@@ -9,7 +9,7 @@ namespace MinionMaster.iOS
         private CLLocationManager locationService;
         Action _locationUpdated;
 
-        void LocationUpdated(object sender, EventArgs a)
+        void LocationUpdated(object sender, CLLocationsUpdatedEventArgs e)
         {
             _locationUpdated.Invoke();
         }
@@ -21,7 +21,7 @@ namespace MinionMaster.iOS
             locationService = new CLLocationManager();
 
             locationService.RequestWhenInUseAuthorization();
-            locationService.UpdatedLocation += LocationUpdated;
+            locationService.LocationsUpdated += LocationUpdated;
             locationService.StartUpdatingLocation();
         }
     }
