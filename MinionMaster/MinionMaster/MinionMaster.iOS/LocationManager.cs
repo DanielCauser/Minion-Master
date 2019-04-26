@@ -25,5 +25,10 @@ namespace MinionMaster.iOS
             locationService.LocationsUpdated += LocationUpdated;
             locationService.StartUpdatingLocation();
         }
+
+        public void StopGettingLocation()
+        {
+            locationService.StopUpdatingLocation();
+        }
     }
 }

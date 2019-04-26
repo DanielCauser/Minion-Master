@@ -37,6 +37,11 @@ namespace MinionMaster.Minion
             });
         }
 
+        public override void OnNavigatedFrom(INavigationParameters parameters)
+        {
+            _locationManager.StopGettingLocation();
+        }
+
         [Reactive] public double Heading { get; set; }
         public ILocationManager LocationManager { get; }
     }
