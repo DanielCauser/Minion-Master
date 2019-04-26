@@ -27,8 +27,9 @@ namespace MinionMaster.Minion
                 });
         }
 
-        public override void OnNavigatedTo(INavigationParameters parameters)
+        public override async void OnNavigatedTo(INavigationParameters parameters)
         {
+            await this.service.Connect();
             _locationManager.StartGettingLocation(async (double lat, double lon) =>
             {
                 await this.service.SendGps(lat, lon);

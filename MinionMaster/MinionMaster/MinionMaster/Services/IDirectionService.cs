@@ -7,6 +7,8 @@ namespace MinionMaster.Services
 {
     public interface IDirectionService
     {
+        Task Connect();
+
         Task BrandMe(string brand);
         Task SendDirection(double heading);
         Task SendGps(double latitude, double longitude);
