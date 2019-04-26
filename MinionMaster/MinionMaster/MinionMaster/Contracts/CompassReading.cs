@@ -3,8 +3,6 @@ namespace MinionMaster.Contracts
 {
     public class CompassReading
     {
-        public CompassReading()
-        {
-        }
+        public double Value { get; set; }
     }
 }
