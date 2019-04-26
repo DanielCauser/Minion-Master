@@ -10,6 +10,7 @@
     <PackageReference Include="LiveXAML" Version="2.1.72" />
     <PackageReference Include="ReactiveUI" Version="9.13.1" />
     <PackageReference Include="System.Reactive" Version="4.1.5" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
