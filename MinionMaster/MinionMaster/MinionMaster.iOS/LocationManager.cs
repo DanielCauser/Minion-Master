@@ -1,5 +1,6 @@
 ﻿using System;
 using CoreLocation;
+using MinionMaster.Services;
 
 namespace MinionMaster.iOS
 {
