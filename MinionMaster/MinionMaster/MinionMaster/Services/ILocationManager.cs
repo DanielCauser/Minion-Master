@@ -3,6 +3,6 @@ namespace MinionMaster.Services
 {
     public interface ILocationManager
     {
-        void StartGettingLocation(Action locationUpdated);
+        void StartGettingLocation(Action<double, double> locationUpdated);
     }
 }
