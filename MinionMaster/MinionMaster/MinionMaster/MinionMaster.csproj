@@ -18,5 +18,6 @@
     <Folder Include="Master\" />
     <Folder Include="Minion\" />
     <Folder Include="Services\" />
+    <Folder Include="Contracts\" />
   </ItemGroup>
 </Project>

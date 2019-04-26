@@ -1,12 +1,24 @@
 ﻿using System;
+using System.Reactive;
+using System.Reactive.Subjects;
+using MinionMaster.Services;
 using Prism.Navigation;
 
 namespace MinionMaster.Minion
 {
     public class MinionViewModel : ViewModelBase
     {
-        public MinionViewModel(INavigationService navigationService) : base(navigationService)
+        private readonly IDirectionService service;
+
+        public MinionViewModel(INavigationService navigationService, IDirectionService service) : base(navigationService)
         {
+            this.service = service;
+
+            this.service.CompassDirectionReceived()
+                .Subscribe((heading) =>
+                {
+
+                });
         }
     }
 }
