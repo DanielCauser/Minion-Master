@@ -22,5 +22,11 @@ namespace MinionMaster.Master
         }
 
         [Reactive] public Xamarin.Forms.Maps.Position Position { get; set; }
+
+        public override async void OnNavigatedTo(INavigationParameters parameters)
+        {
+            base.OnNavigatedTo(parameters);
+            await service.Connect();
+        }
     }
 }

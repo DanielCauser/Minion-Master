@@ -46,6 +46,7 @@ namespace MinionMaster.Services
             });
 
             await connection.StartAsync();
+            await BrandMe("WTF");
         }
 
         public async Task BrandMe(string brand)
