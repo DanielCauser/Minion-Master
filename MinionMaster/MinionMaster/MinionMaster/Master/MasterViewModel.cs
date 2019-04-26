@@ -10,17 +10,17 @@ namespace MinionMaster.Master
     {
         private readonly IDirectionService service;
 
-        public MasterViewModel(INavigationService navigationService, IDirectionService service) : base(navigationService)
+        public MasterViewModel(INavigationService navigationService, IDirectionService service)
         {
             this.service = service;
 
             this.service.OnGpsReceived()
-                .Subscribe((heading) =>
+                .Subscribe((position) =>
                 {
-
+                    Position = new Xamarin.Forms.Maps.Position(position.Latitude, position.Longitude);
                 });
         }
 
-        [Reactive] public Position Position { get; set; }
+        [Reactive] public Xamarin.Forms.Maps.Position Position { get; set; }
     }
 }

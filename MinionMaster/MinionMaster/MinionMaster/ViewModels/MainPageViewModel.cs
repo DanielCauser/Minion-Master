@@ -15,7 +15,6 @@ namespace MinionMaster.ViewModels
 
         public MainPageViewModel(INavigationService navigationService,
             ILocationManager locationManager)
-            : base(navigationService)
         {
             Title = "Main Page";
             _locationManager = locationManager;

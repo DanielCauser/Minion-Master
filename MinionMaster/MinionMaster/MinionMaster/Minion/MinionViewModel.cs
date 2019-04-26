@@ -14,7 +14,7 @@ namespace MinionMaster.Minion
 
         public MinionViewModel(INavigationService navigationService,
              IDirectionService service,
-             ILocationManager locationManager) : base(navigationService)
+             ILocationManager locationManager)
         {
             _locationManager = locationManager;
 

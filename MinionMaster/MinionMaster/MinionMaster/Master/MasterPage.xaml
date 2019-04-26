@@ -5,7 +5,12 @@
             <maps:Map WidthRequest="320" HeightRequest="200"
                   x:Name="MyMap" 
                   IsShowingUser="true">
-                
+                <maps:Map.ItemTemplate>
+                <DataTemplate>
+                    <maps:Pin Position="{Binding Position}"
+                              Label="Minion" />
+                </DataTemplate>
+            </maps:Map.ItemTemplate>
                 </maps:Map>
             </Grid>
     </ContentPage.Content>
