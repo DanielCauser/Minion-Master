@@ -3,6 +3,7 @@ using System.Reactive;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.SignalR.Client;
 using MinionMaster.Contracts;
 
 namespace MinionMaster.Services
@@ -17,42 +18,67 @@ namespace MinionMaster.Services
 
 
         //IObservable<CompassReading> GpsReceived =>
-        //Observable.Create<CompassReading>(ob => this.conn.On<CompassReading>("CompassDirectionReading")
+        //Observable.Create<CompassReading>(ob => this.conn.On<CompassReading>("CompassDirectionReading"))
 
-
-
+        private HubConnection connection;
 
         public DirectionService()
         {
             //this.onPartnerStatusChangedSubject = new Subject<Unit>();
             this.onCompassDirectionReceivedSubject = new Subject<CompassReading>();
             this.onGpsReceivedSubject = new Subject<Position>();
+
+            connection = new HubConnectionBuilder()
+                .WithUrl("https://minions.azurewebsites.net/main")
+                .Build();
         }
 
-        public Task BrandMe(string brand)
-        {
-            throw new NotImplementedException();
+        public async Task Connect () {
+            
+            connection.On<Position>("GpsReceived", (position) =>
+            {
+                onGpsReceivedSubject.OnNext(position);
+            });
+
+            connection.On<CompassReading>("CompassDirectionReceived", (heading) =>
+            {
+                onCompassDirectionReceivedSubject.OnNext(heading);
+            });
+
+            await connection.StartAsync();
         }
 
-        public Task SendDirection(double heading)
+        public async Task BrandMe(string brand)
         {
-            throw new NotImplementedException();
+            await connection.InvokeAsync("BrandMe", brand);
         }
 
-        public Task SendGps(double latitude, double longitude)
+        public async Task SendDirection(double heading)
         {
-            throw new NotImplementedException();
+            await connection.InvokeAsync("SendDirection", new CompassReading
+            {
+                Value = heading
+            });
         }
 
-        public IObservable<CompassReading> CompassDirectionReceived()
+        public async Task SendGps(double latitude, double longitude)
         {
-            throw new NotImplementedException();
+            await connection.InvokeAsync("SendGps", new Position
+            {
+                Latitude = latitude,
+                Longitude = longitude
+            });
         }
 
-        public IObservable<Position> GpsReceived()
-        {
-            throw new NotImplementedException();
-        }
+        //public async IObservable<CompassReading> CompassDirectionReceived()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public async IObservable<Position> GpsReceived()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
     }
 }
