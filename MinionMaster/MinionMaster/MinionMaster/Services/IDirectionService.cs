@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reactive;
 using System.Threading.Tasks;
+using MinionMaster.Contracts;
 
 namespace MinionMaster.Services
 {
@@ -10,8 +11,8 @@ namespace MinionMaster.Services
         Task SendDirection(double heading);
         Task SendGps(double latitude, double longitude);
 
-        IObservable<Unit> PartnerStatusChanged();
-        IObservable<Unit> GpsReceived();
-        IObservable<double> CompassDirectionReceived();
+        //IObservable<Unit> PartnerStatusChanged();
+        IObservable<Position> GpsReceived();
+        //IObservable<double> CompassDirectionReceived();
     }
 }
