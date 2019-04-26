@@ -32,7 +32,7 @@ namespace MinionMaster.iOS
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            // Register any platform specific implementations
+            containerRegistry.RegisterSingleton<ILocationManager, LocationManager>();
         }
     }
 }
