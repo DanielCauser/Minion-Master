@@ -1,20 +1,21 @@
 ﻿using System;
 using CoreLocation;
 using MinionMaster.Services;
+using System.Linq;
 
 namespace MinionMaster.iOS
 {
     public class LocationManager : ILocationManager
     {
         private CLLocationManager locationService;
-        Action _locationUpdated;
+        Action<double, double> _locationUpdated;
 
         void LocationUpdated(object sender, CLLocationsUpdatedEventArgs e)
         {
-            _locationUpdated.Invoke();
+            _locationUpdated.Invoke(e.Locations.First().Coordinate.Latitude, e.Locations.First().Coordinate.Longitude);
         }
 
-        public void StartGettingLocation(Action locationUpdated)
+        public void StartGettingLocation(Action<double, double> locationUpdated)
         {
             _locationUpdated = locationUpdated;
 
