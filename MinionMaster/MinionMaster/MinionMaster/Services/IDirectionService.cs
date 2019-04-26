@@ -13,6 +13,6 @@ namespace MinionMaster.Services
 
         //IObservable<Unit> PartnerStatusChanged();
         IObservable<Position> GpsReceived();
-        //IObservable<double> CompassDirectionReceived();
+        IObservable<double> CompassDirectionReceived();
     }
 }

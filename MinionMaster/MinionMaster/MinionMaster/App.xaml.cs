@@ -1,6 +1,7 @@
 ﻿using MinionMaster.Master;
 using MinionMaster.Minion;
 using MinionMaster.Root;
+using MinionMaster.Services;
 using Prism;
 using Prism.Ioc;
 
@@ -36,6 +37,9 @@ namespace MinionMaster
 
             containerRegistry.RegisterForNavigation<MasterPage, MasterViewModel>();
             containerRegistry.RegisterForNavigation<MinionPage, MinionViewModel>();
+
+
+            containerRegistry.RegisterSingleton<IDirectionService, DirectionService>();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Foundation;
+using MinionMaster.Services;
 using Prism;
 using Prism.Ioc;
 using UIKit;

@@ -3,6 +3,7 @@ using System.Reactive;
 using System.Reactive.Subjects;
 using MinionMaster.Services;
 using Prism.Navigation;
+using ReactiveUI.Fody.Helpers;
 
 namespace MinionMaster.Minion
 {
@@ -17,8 +18,10 @@ namespace MinionMaster.Minion
             this.service.CompassDirectionReceived()
                 .Subscribe((heading) =>
                 {
-
+                    this.Heading = heading;
                 });
         }
+
+        [Reactive] public double Heading { get; set; }
     }
 }
